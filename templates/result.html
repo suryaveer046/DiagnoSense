@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiagnoSense | Prediction Result</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="page-wrapper result-page">
+        <div class="background-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        
+        <header>
+            <a href="/home" class="logo">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>DiagnoSense</span>
+            </a>
+            <div class="user-menu">
+                <div class="user-greeting">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Hello, {{ user_name }}</span>
+                </div>
+                <a href="/logout" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </header>
+        
+        <main class="container">
+            <section class="result-container scale-in">
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h1>Analysis Results</h1>
+                    </div>
+                    
+                    <div class="result-content">
+                        <div class="result-item fade-in">
+                            <h2>Possible Condition</h2>
+                            <div class="prediction-result">
+                                <i class="fas fa-stethoscope"></i>
+                                <span class="prediction-text">{{ prediction }}</span>
+                            </div>
+                            <div class="search-link">
+                                <a href="https://www.google.com/search?q={{ prediction }}+disease+symptoms+treatment" target="_blank" class="btn btn-outline">
+                                    <i class="fas fa-search"></i>
+                                    <span>Learn more about this condition</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="result-item fade-in-delayed">
+                            <h2>Based on Your Symptoms</h2>
+                            <div class="symptoms-list">
+                                {% for symptom in selected %}
+                                {% if symptom %}
+                                <div class="symptom-tag">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{ symptom }}</span>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <!-- Find Specialists Section -->
+                        <div class="result-item slide-up">
+                            <h2>Find Specialists Near You</h2>
+                            <div class="specialist-finder">
+                                <p>Enter your city to find the best specialists for your condition:</p>
+                                <div class="city-input-container">
+                                    <input type="text" id="cityInput" class="form-input" placeholder="Enter your city (e.g., Mumbai, Delhi, Bangalore)" list="indian-cities">
+                                    <datalist id="indian-cities">
+                                        <option value="Mumbai">
+                                        <option value="Delhi">
+                                        <option value="Bangalore">
+                                        <option value="Hyderabad">
+                                        <option value="Chennai">
+                                        <option value="Kolkata">
+                                        <option value="Pune">
+                                        <option value="Ahmedabad">
+                                        <option value="Jaipur">
+                                        <option value="Lucknow">
+                                        <option value="Kochi">
+                                        <option value="Chandigarh">
+                                        <option value="Coimbatore">
+                                        <option value="Indore">
+                                        <option value="Nagpur">
+                                        <option value="Bhopal">
+                                        <option value="Visakhapatnam">
+                                        <option value="Patna">
+                                        <option value="Vadodara">
+                                        <option value="Guwahati">
+                                    </datalist>
+                                    <button id="findSpecialistsBtn" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                        <span>Find Specialists</span>
+                                    </button>
+                                </div>
+                                <div id="specialistLinkContainer" class="specialist-link-container" style="display: none;">
+                                    <div class="specialist-card">
+                                        <div class="specialist-icon">
+                                            <i class="fas fa-user-md"></i>
+                                        </div>
+                                        <div class="specialist-info">
+                                            <h3>Best Specialists Found</h3>
+                                            <p>We've found specialists who can help with <strong>{{ prediction }}</strong> in your area.</p>
+                                            <a id="justdialLink" href="#" target="_blank" class="btn btn-primary btn-block">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                <span>View Specialists on JustDial</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="disclaimer slide-up">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>This is an AI-assisted prediction and should not replace professional medical advice. Please consult with a healthcare provider for proper diagnosis and treatment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <a href="/home" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i>
+                            <span>New Analysis</span>
+                        </a>
+                        <button class="btn btn-primary" id="printResult">
+                            <i class="fas fa-print"></i>
+                            <span>Print Results</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="next-steps fade-in-delayed">
+                    <h3><i class="fas fa-clipboard-list"></i> Recommended Next Steps</h3>
+                    <ul>
+                        <li>Consult with a healthcare professional</li>
+                        <li>Keep track of any changes in your symptoms</li>
+                        <li>Research reliable medical sources about your condition</li>
+                        <li>Find a specialist in your area using the tool above</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2024 DiagnoSense | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Disease to specialist mapping
+        const diseaseToSpecialist = {
+            "Fungal infection": "Dermatologist",
+            "Allergy": "Allergist",
+            "GERD": "Gastroenterologist",
+            "Chronic cholestasis": "Hepatologist",
+            "Drug Reaction": "Allergist",
+            "Peptic ulcer diseae": "Gastroenterologist",
+            "AIDS": "Infectious Disease Specialist",
+            "Diabetes": "Endocrinologist",
+            "Gastroenteritis": "Gastroenterologist",
+            "Bronchial Asthma": "Pulmonologist",
+            "Hypertension": "Cardiologist",
+            "Migraine": "Neurologist",
+            "Cervical spondylosis": "Orthopedic",
+            "Paralysis (brain hemorrhage)": "Neurologist",
+            "Jaundice": "Hepatologist",
+            "Malaria": "Infectious Disease Specialist",
+            "Chicken pox": "Infectious Disease Specialist",
+            "Dengue": "Infectious Disease Specialist",
+            "Typhoid": "Infectious Disease Specialist",
+            "Hepatitis A": "Hepatologist",
+            "Hepatitis B": "Hepatologist",
+            "Hepatitis C": "Hepatologist",
+            "Hepatitis D": "Hepatologist",
+            "Hepatitis E": "Hepatologist",
+            "Alcoholic hepatitis": "Hepatologist",
+            "Tuberculosis": "Pulmonologist",
+            "Common Cold": "General Physician",
+            "Pneumonia": "Pulmonologist",
+            "Dimorphic hemmorhoids(piles)": "Proctologist",
+            "Heart attack": "Cardiologist",
+            "Varicose veins": "Vascular Surgeon",
+            "Hypothyroidism": "Endocrinologist",
+            "Hyperthyroidism": "Endocrinologist",
+            "Hypoglycemia": "Endocrinologist",
+            "Osteoarthristis": "Rheumatologist",
+            "Arthritis": "Rheumatologist",
+            "(vertigo) Paroymsal Positional Vertigo": "ENT Specialist",
+            "Acne": "Dermatologist",
+            "Urinary tract infection": "Urologist",
+            "Psoriasis": "Dermatologist",
+            "Impetigo": "Dermatologist"
+        };
+        
+        // Default to General Physician if disease not found
+        const prediction = "{{ prediction }}";
+        const specialist = diseaseToSpecialist[prediction] || "General Physician";
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const cityInput = document.getElementById('cityInput');
+            const findSpecialistsBtn = document.getElementById('findSpecialistsBtn');
+            const specialistLinkContainer = document.getElementById('specialistLinkContainer');
+            const justdialLink = document.getElementById('justdialLink');
+            
+            findSpecialistsBtn.addEventListener('click', function() {
+                const city = cityInput.value.trim();
+                if (city) {
+                    // Create JustDial URL
+                    const justdialUrl = `https://www.justdial.com/${city}/${specialist.replace(/\s+/g, '-')}`;
+                    
+                    // Update link
+                    justdialLink.href = justdialUrl;
+                    
+                    // Show link container
+                    specialistLinkContainer.style.display = 'block';
+                    
+                    // Scroll to link
+                    specialistLinkContainer.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('Please enter a city name');
+                }
+            });
+            
+            // Print functionality
+            const printButton = document.getElementById('printResult');
+            if (printButton) {
+                printButton.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+        });
+    </script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

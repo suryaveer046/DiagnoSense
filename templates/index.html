@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiagnoSense | Disease Prediction</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="background-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        
+        <header>
+            <a href="/home" class="logo">
+                <i class="fas fa-heartbeat pulse"></i>
+                <span>DiagnoSense</span>
+            </a>
+            <div class="user-menu">
+                <div class="user-greeting">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Hello, {{ user_name }}</span>
+                </div>
+                <a href="/logout" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </header>
+        
+        <main class="container">
+            <section class="intro fade-in">
+                <h1>Disease Prediction <span class="highlight">Assistant</span></h1>
+                <p>Select your symptoms below and let our AI help identify possible conditions.</p>
+            </section>
+            
+            <section class="prediction-form slide-up">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-stethoscope"></i>
+                        <h2>Symptom Analysis</h2>
+                    </div>
+                    
+                    <form action="/predict" method="post" id="symptomForm">
+                        <div class="form-group">
+                            <label for="symptom1">
+                                <i class="fas fa-clipboard-check"></i> Primary Symptom
+                            </label>
+                            <div class="select-wrapper">
+                                <select name="symptoms" id="symptom1" class="custom-select">
+                                    <option value="">-- Select a symptom --</option>
+                                    {% for symptom in symptoms %}
+                                    <option value="{{ symptom }}">{{ symptom }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="symptom2">
+                                <i class="fas fa-clipboard-check"></i> Secondary Symptom
+                            </label>
+                            <div class="select-wrapper">
+                                <select name="symptoms" id="symptom2" class="custom-select">
+                                    <option value="">-- Select a symptom (optional) --</option>
+                                    {% for symptom in symptoms %}
+                                    <option value="{{ symptom }}">{{ symptom }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="symptom3">
+                                <i class="fas fa-clipboard-check"></i> Additional Symptom
+                            </label>
+                            <div class="select-wrapper">
+                                <select name="symptoms" id="symptom3" class="custom-select">
+                                    <option value="">-- Select a symptom (optional) --</option>
+                                    {% for symptom in symptoms %}
+                                    <option value="{{ symptom }}">{{ symptom }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <span>Analyze Symptoms</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="info-box fade-in-delayed">
+                    <div class="info-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>How it works</h3>
+                        <p>Our AI analyzes your symptoms and compares them with thousands of medical cases to provide possible conditions. After analysis, you can find specialists in your city who can help with your condition.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2024 DiagnoSense | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+        </footer>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

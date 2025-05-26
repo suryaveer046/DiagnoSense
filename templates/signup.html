@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiagnoSense | Sign Up</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+    <div class="page-wrapper auth-page">
+        <div class="background-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        
+        <div class="auth-container">
+            <div class="auth-card scale-in">
+                <div class="auth-header">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat pulse"></i>
+                        <span>DiagnoSense</span>
+                    </div>
+                    <h1>Create Account</h1>
+                    <p>Join DiagnoSense for personalized health insights</p>
+                </div>
+                
+                {% if error %}
+                    <div class="flash-message error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>{{ error }}</span>
+                    </div>
+                {% endif %}
+                
+                <form action="/signup" method="post" class="auth-form" id="signupForm">
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user-circle"></i> Username
+                        </label>
+                        <input type="text" id="username" name="username" class="form-input" placeholder="Choose a username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="password" name="password" class="form-input" placeholder="Create a password" required>
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">
+                            <i class="fas fa-lock"></i> Confirm Password
+                        </label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="confirm-password" name="confirm-password" class="form-input" placeholder="Confirm your password" required>
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Create Account</span>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="/login" class="auth-link">Sign In</a></p>
+                </div>
+            </div>
+            
+            <div class="auth-info fade-in-delayed">
+                <div class="auth-info-content">
+                    <h2>Join DiagnoSense Today</h2>
+                    <p>Create your account to access personalized health insights and symptom analysis.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Secure and private</li>
+                        <li><i class="fas fa-check-circle"></i> Easy to use</li>
+                        <li><i class="fas fa-check-circle"></i> Personalized experience</li>
+                    </ul>
+                </div>
+                <div class="auth-image">
+                    <div class="image-container signup">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
