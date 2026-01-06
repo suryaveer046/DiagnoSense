@@ -19,6 +19,6 @@ python model_trainer.py
 3. Start the app
 ```
 python app.py
-```
+`````
 
 Visit `http://127.0.0.1:5000/` in your browser.
