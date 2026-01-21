@@ -1,4 +1,4 @@
-# Disease Prediction Web App
+# Disease Prediction Web App 
 
 ## Features
 - Multiple symptom input
