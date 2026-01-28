@@ -16,7 +16,7 @@ users = {
 with open("model/disease_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-symptoms = pd.read_csv("dataset/Training.csv").drop("prognosis", axis=1).columns.tolist()
+symptoms = pd.read_csv("dataset/Training.csv").drop("prognosis", axis=1).columns.tolist() 
 
 @app.route("/")
 def root():
