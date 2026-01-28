@@ -10,7 +10,7 @@ app.permanent_session_lifetime = timedelta(minutes=30)
 
 # Temporary user storage (would be a database in a real application)
 users = {
-    "abc": {"password": "123", "name": "Demo User"}
+    "abc": {"password": "123", "name": "Demo User"} 
 }
 
 with open("model/disease_model.pkl", "rb") as f:
