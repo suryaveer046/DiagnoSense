@@ -6,7 +6,7 @@ from datetime import timedelta
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-app.permanent_session_lifetime = timedelta(minutes=30)
+app.permanent_session_lifetime = timedelta(minutes=30) 
 
 # Temporary user storage (would be a database in a real application)
 users = {
