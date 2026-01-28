@@ -12,7 +12,7 @@ app.permanent_session_lifetime = timedelta(minutes=30)
 users = {
     "abc": {"password": "123", "name": "Demo User"} 
 }
-
+ 
 with open("model/disease_model.pkl", "rb") as f: 
     model = pickle.load(f)
  
