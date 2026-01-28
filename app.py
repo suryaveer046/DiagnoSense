@@ -21,7 +21,7 @@ symptoms = pd.read_csv("dataset/Training.csv").drop("prognosis", axis=1).columns
 @app.route("/")
 def root():
     if "user" in session: 
-        return redirect(url_for("home"))
+        return redirect(url_for("home")) 
     return redirect(url_for("login"))
 
 @app.route("/login", methods=["GET", "POST"])
