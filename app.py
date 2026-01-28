@@ -29,7 +29,7 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        
+         
         if username in users and users[username]["password"] == password:
             session.permanent = True
             session["user"] = username
