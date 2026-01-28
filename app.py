@@ -13,7 +13,7 @@ users = {
     "abc": {"password": "123", "name": "Demo User"} 
 }
 
-with open("model/disease_model.pkl", "rb") as f:
+with open("model/disease_model.pkl", "rb") as f: 
     model = pickle.load(f)
 
 symptoms = pd.read_csv("dataset/Training.csv").drop("prognosis", axis=1).columns.tolist() 
