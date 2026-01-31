@@ -2,7 +2,7 @@
     
 ## Features  
 - Multiple symptom input
-- Animated, modern UI
+- Animated, modern UI 
 - Disease prediction using Decision Tree
 
 ## How to Run
