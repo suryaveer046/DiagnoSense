@@ -1,5 +1,5 @@
 # Disease Prediction Web App  
- 
+  
 ## Features    
 - Multiple symptom input
 - Animated, modern UI 
