@@ -1,6 +1,6 @@
 # Disease Prediction Web App 
     
-## Features  
+## Features   
 - Multiple symptom input
 - Animated, modern UI 
 - Disease prediction using Decision Tree
