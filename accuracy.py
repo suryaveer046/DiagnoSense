@@ -10,7 +10,7 @@ test_df = pd.read_csv("dataset/Testing.csv")
 # Features and labels
 X_train = train_df.drop(columns=['prognosis'])  
 y_train = train_df['prognosis'] 
-X_test = test_df.drop(columns=['prognosis'])
+X_test = test_df.drop(columns=['prognosis']) 
 y_test = test_df['prognosis']
 
 # Encode labels
