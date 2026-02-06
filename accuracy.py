@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # Load datasets
 train_df = pd.read_csv("dataset/Training.csv")
-test_df = pd.read_csv("dataset/Testing.csv")
+test_df = pd.read_csv("dataset/Testing.csv") 
 
 # Features and labels
 X_train = train_df.drop(columns=['prognosis'])
